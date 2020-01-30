@@ -1,16 +1,19 @@
 class Solution {
     /**
-     * 1. int -> string
-     * 2. string.length
+     * 
      */
-    public int findNumbers(int[] nums) {
-        int c = 0;
-        for (Integer n: nums) {
-            String s = new String(n.toString());
-            if (s.length() % 2 == 0) {
-                c++;
+    public int[] decompressRLElist(int[] nums) {
+        List<Integer> resultList = new LinkedList();
+        for (int i = 0; i < nums.length; i += 2) {
+            for (int j = 0; j < nums[i]; j++) {
+                resultList.add(nums[i + 1]);
             }
         }
-        return c;
+        int[] result = new int[resultList.size()];
+        int index = 0;
+        for (Integer integer : resultList) {
+            result[index++] = integer;
+        }
+        return result;
     }
 }
