@@ -7,15 +7,21 @@
  * }
  */
 class Solution {
+    /**
+     * 双指针
+     *
+     */
     public ListNode reverseList(ListNode head) {
-        ListNode pre = null;
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode nextTemp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = nextTemp;
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            // 记录下一个节点，并将当前节点的下一个节点赋为 prev
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            // prev curr 都向前移一位
+            prev = curr;
+            curr = nextTemp;
         }
-        return pre;
+        return prev;
     }
 }
